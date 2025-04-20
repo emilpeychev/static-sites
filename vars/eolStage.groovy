@@ -1,4 +1,5 @@
-def eolScan() {
+// vars/eolStage.groovy
+def call() {
         echo "Checking for End-of-Life packages using xeol..."
         
     // Install xeol if needed
