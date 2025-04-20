@@ -11,5 +11,5 @@ def call() {
     '''
     
     // Run the xeol scan
-    sh "xeol . --output table"  // or json, sarif, etc.
+    sh "/usr/local/bin/xeol . --output table"  // or json, sarif, etc.
 }
