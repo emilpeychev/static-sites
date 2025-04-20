@@ -1,4 +1,4 @@
-@Library('jenkins-shared-lib') _
+@Library('eolStage.groovy') _
 
 pipeline {
     agent any
