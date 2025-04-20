@@ -11,7 +11,7 @@ pipeline {
                     gv = load "script.groovy"
                 }
             }
-            description: "Initialising groovy script"
+             "Initialising groovy script"
         }
 
         stage("build") {
@@ -21,7 +21,6 @@ pipeline {
                     gv.buildImage()
                 }
             }
-            description: "Building the Docker image"
         }
 
         stage("test for EOL") {
@@ -31,7 +30,6 @@ pipeline {
                     eolStage()
                 }
             }
-            description: "Scanning for End-of-Life packages"
         }
 
         stage("deploy") {
@@ -41,7 +39,6 @@ pipeline {
                     gv.deployApp()
                 }
             }
-            description: "Deploying the application"
         }
     }
 }
