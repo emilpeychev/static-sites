@@ -1,17 +1,15 @@
 // vars/eolStage.groovy
-
 def call() {
-    echo "Checking for End-of-Life packages using xeol..."
-
+        echo "Checking for End-of-Life packages using xeol..."
+        
+    // Install xeol if needed
     sh '''
         if ! command -v xeol > /dev/null; then
             echo "Installing xeol..."
-            mkdir -p $WORKSPACE/bin
-            curl -sSfL https://raw.githubusercontent.com/anchore/xeol/main/install.sh | sh -s -- -b $WORKSPACE/bin
-            export PATH=$WORKSPACE/bin:$PATH
+            curl -sSfL https://raw.githubusercontent.com/anchore/xeol/main/install.sh | sh -s -- -b /usr/local/bin
         fi
-
-        # Run the xeol scan
-        $WORKSPACE/bin/xeol . --output table
     '''
+    
+    // Run the xeol scan
+    sh "/usr/local/bin/xeol . --output table"  // or json, sarif, etc.
 }
