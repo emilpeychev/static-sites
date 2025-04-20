@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Scanning for End-of-Life packages..."
-                    eolStage(gv)
+                    eolStage()
                 }
             }
             description: "Scanning for End-of-Life packages"
