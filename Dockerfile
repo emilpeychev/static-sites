@@ -4,8 +4,7 @@ FROM php:apache
 RUN apt-get update && apt-get install -y adduser
 RUN adduser --disabled-password --gecos '' unprivileged_user
 
-
-# Copy files into the web root
+# Copy site into the web root
 COPY ./website /var/www/html
 
 # Set permissions 
