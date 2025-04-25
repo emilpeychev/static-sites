@@ -14,6 +14,6 @@ def buildImage() {
 
 // def deployApp() {
 //     echo 'Deploying the application...'
-//     // Add your deployment logic here
+//     // Deployment logic here
 // }
 return this
