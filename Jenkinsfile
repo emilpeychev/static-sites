@@ -1,5 +1,7 @@
 @Library('shared-lib') _
 
+def gv
+
 pipeline {
     agent any
 
