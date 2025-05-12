@@ -3,7 +3,7 @@
 def gv
 
 pipeline {
-    agent 
+    agent any
         label 'docker-agent'
 
     stages {
