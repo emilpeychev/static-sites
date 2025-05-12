@@ -1,8 +1,11 @@
 @Library('shared-lib') _
 
-pipeline {
-    agent any
+def gv
 
+pipeline {
+    agent {
+        label 'linode-agent'
+        }
     stages {
         stage("init") {
             steps {
@@ -31,13 +34,13 @@ pipeline {
             }
         }
 
-        // stage("deploy") {
-        //     steps {
-        //         script {
-        //             echo "Deploying the application...."
-        //             gv.deployApp()
-        //         }
-        //     }
-        // }
+        stage("deploy") {
+            steps {
+                script {
+                    echo "Deploying the application...."
+                    gv.deployApp()
+                }
+            }
+        }
     }
 }
