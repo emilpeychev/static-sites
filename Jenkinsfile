@@ -1,7 +1,7 @@
 @Library('shared-lib') _
 
 pipeline {
-    agent "docker-agent"
+    agent any
 
     stages {
         stage("init") {
