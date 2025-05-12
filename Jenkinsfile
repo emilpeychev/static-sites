@@ -4,7 +4,7 @@ def gv
 
 pipeline {
     agent {
-        label 'docker-agent'
+        label 'linode-agent'
         }
     stages {
         stage("init") {
