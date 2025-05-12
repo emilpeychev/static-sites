@@ -1,7 +1,7 @@
 @Library('shared-lib') _
 
 pipeline {
-    agent any
+    agent "docker-agent"
 
     stages {
         stage("init") {
@@ -31,13 +31,13 @@ pipeline {
             }
         }
 
-        // stage("deploy") {
-        //     steps {
-        //         script {
-        //             echo "Deploying the application...."
-        //             gv.deployApp()
-        //         }
-        //     }
-        // }
+        stage("deploy") {
+            steps {
+                script {
+                    echo "Deploying the application...."
+                    gv.deployApp()
+                }
+            }
+        }
     }
 }
