@@ -3,7 +3,7 @@
 def gv
 
 pipeline {
-    agent any
+    agent 'linode-agent'
 
     stages {
         stage("init") {
