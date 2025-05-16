@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage("test for EOL") {
+        stage("test for EOL packages") {
             steps {
                 script {
                     echo "Scanning for End-of-Life packages..."

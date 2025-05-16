@@ -6,7 +6,7 @@ def call() {
     sh '''
         if ! command -v xeol > /dev/null; then
             echo "Installing xeol..."
-            curl -sSfL https://raw.githubusercontent.com/anchore/xeol/main/install.sh | sh -s -- -b /usr/local/bin
+            curl -sSfL https://raw.githubusercontent.com/xeol-io/xeol/main/install.sh | sh -s -- -b /usr/local/bin
         fi
     '''
     
