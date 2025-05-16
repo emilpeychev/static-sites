@@ -1,13 +1,20 @@
 @Library('shared-lib') _
 
 def gv
-envStage()
 
 pipeline {
     agent {
         label 'linode-agent'
         }
     stages {
+        stage("detect environment") {
+            steps {
+                script {
+                    envStage()
+                }
+            }
+        }
+        
         stage("init") {
             steps {
                 script {
