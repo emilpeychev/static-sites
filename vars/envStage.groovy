@@ -5,10 +5,8 @@ def call() {
     echo "Environment: ${isProd ? 'Production' : 'Development'} (Branch: ${branch})"
 
     if (isProd) {
-        // Run prod-only checks
         sh "echo 'Running production tasks...'"
     } else {
-        // Run dev-only scans
         sh "echo 'Running dev tasks...'"
     }
 }
