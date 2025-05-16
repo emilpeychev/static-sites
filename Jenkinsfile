@@ -7,6 +7,14 @@ pipeline {
         label 'linode-agent'
         }
     stages {
+        stage("detect environment") {
+            steps {
+                script {
+                    envStage()
+                }
+            }
+        }
+
         stage("init") {
             steps {
                 script {
@@ -25,7 +33,7 @@ pipeline {
             }
         }
 
-        stage("test for EOL") {
+        stage("test for EOL packages") {
             steps {
                 script {
                     echo "Scanning for End-of-Life packages..."
@@ -35,6 +43,11 @@ pipeline {
         }
 
         stage("deploy") {
+
+            when{
+                branch 'master'
+            }
+
             steps {
                 script {
                     echo "Deploying the application...."
