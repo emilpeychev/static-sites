@@ -1,6 +1,7 @@
 def imageName = ''
 
 def buildImage() {
+
     def branchName = env.BRANCH_NAME ?: 'local'
     def sanitizedBranch = branchName.replaceAll(/[^a-zA-Z0-9.-]/, '-')
     echo "Building the docker image for branch: ${branchName}..."
@@ -29,4 +30,5 @@ def deployApp() {
 
     }
 }
+
 return this
