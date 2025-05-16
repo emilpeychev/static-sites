@@ -6,9 +6,9 @@ def call() {
     sh '''
         if ! command -v xeol > /dev/null; then
             echo "Installing xeol..."
-            mkdir -p ~/.local/bin
-            curl -sSfL https://raw.githubusercontent.com/xeol-io/xeol/main/install.sh | sh -s -- -b /usr/local/bin
-            export PATH=~/.local/bin:$PATH
+            mkdir -p ~/tmp/bin
+            curl -sSfL https://raw.githubusercontent.com/xeol-io/xeol/main/install.sh | sh -s -- -b /tmp/bin
+            export PATH=~/tmp/bin:$PATH
         fi
     '''
     
