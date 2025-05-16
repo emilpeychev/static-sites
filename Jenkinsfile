@@ -5,12 +5,11 @@ def gv
 pipeline {
     agent {
         label 'linode-agent'
-    }
+        }
     stages {
         stage("detect environment") {
             steps {
                 script {
-                    // You mentioned envStage() - make sure this is defined somewhere
                     envStage()
                 }
             }
@@ -28,7 +27,7 @@ pipeline {
         stage("build") {
             steps {
                 script {
-                    echo "Building the application and Docker image...."
+                    echo "Building the application...."
                     gv.buildImage()
                 }
             }
@@ -44,7 +43,7 @@ pipeline {
         }
 
         stage("deploy") {
-            when {
+            when{
                 branch 'master'
             }
             steps {
