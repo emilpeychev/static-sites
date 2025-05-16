@@ -1,6 +1,7 @@
-@Library('shared-lib@rs-dev') _
+@Library('shared-lib') _
 
 def gv
+envStage()
 
 pipeline {
     agent {
