@@ -1,5 +1,4 @@
 def imageName = ''
-// Dynamic Branch detection
 def branchName = env.BRANCH_NAME ?: 'local'
 
 def buildImage() { 
@@ -19,15 +18,14 @@ def buildImage() {
 
 def deployApp() {
     echo 'Deploying the application...'
-    // Deployment logic here
     withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh """
             echo \$PASS | docker login -u \$USER --password-stdin
             docker pull ${imageName}
             docker rm -f static-site || true
             docker run -d --name static-site -p 8080:80 ${imageName}
-    """
-
+        """
     }
 }
+
 return this
