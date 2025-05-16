@@ -35,6 +35,9 @@ pipeline {
         }
 
         stage("deploy") {
+            when{
+                branch 'master'
+            }
             steps {
                 script {
                     echo "Deploying the application...."
