@@ -14,7 +14,8 @@ pipeline {
         stage("detect environment") {
             steps {
                 script {
-                    envStage()
+                    ENV_TYPE = envStage()
+                    env.ENV_TYPE = ENV_TYPE
                 }
             }
         }
