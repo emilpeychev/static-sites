@@ -8,7 +8,7 @@ pipeline {
         }
         
     environment {
-        // Optional: define fallback default
+        define fallback default
         ENV_TYPE = 'dev'
     }
 
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     echo "Building the application...."
-                    gv.buildImage()
+                    gv.buildImage(ENV_TYPE)
                 }
             }
         }
@@ -57,7 +57,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying the application...."
-                    gv.deployApp()
+                    gv.deployApp(ENV_TYPE)
                 }
             }
         }
