@@ -17,7 +17,6 @@ def buildImage() {
     }
 }
 
-
 def deployApp() {
     echo "Deploying to ${envType} environment..."
     withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
@@ -29,6 +28,5 @@ def deployApp() {
         """
     }
 }
-
 
 return this
