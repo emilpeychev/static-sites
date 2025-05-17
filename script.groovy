@@ -24,8 +24,8 @@ def deployApp() {
         sh """
             echo \$PASS | docker login -u \$USER --password-stdin
             docker pull ${imageName}
-            docker rm -f static-site-${envType} || true
-            docker run -d --name static-site-${envType} -p 8080:80 ${imageName}
+            docker rm -f static-site-${env.ENV_TYPE} || true
+            docker run -d --name static-site-${env.ENV_TYPE} -p 8080:80 ${imageName}
         """
     }
 }
