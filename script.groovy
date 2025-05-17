@@ -18,7 +18,7 @@ def buildImage() {
 }
 
 def deployApp() {
-    echo "Deploying to ${envType} environment..."
+    echo "Deploying to ${env.ENV_TYPE} environment..."
     withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         sh """
             echo \$PASS | docker login -u \$USER --password-stdin
