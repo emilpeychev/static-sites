@@ -2,6 +2,8 @@
 
 def gv
 
+def ENV_TYPE = 'dev' // fallback/default, will be overwritten
+
 pipeline {
     agent {
         label 'linode-agent'
