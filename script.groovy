@@ -1,11 +1,9 @@
 def imageName = ''
 
-def envType = env.ENV_TYPE ?: 'dev'
-
 def buildImage() {
     def branchName = env.BRANCH_NAME ?: 'local'
     def sanitizedBranch = branchName.replaceAll(/[^a-zA-Z0-9.-]/, '-')
-    echo "Building the docker image for ${envType} environment..."
+    echo "Building the docker image for ${env.ENV_TYPE} environment..."
 
     withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
         def timestamp = sh(script: 'date +"%Y%m%d%H%M%S"', returnStdout: true).trim()
