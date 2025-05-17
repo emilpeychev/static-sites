@@ -7,10 +7,6 @@ pipeline {
         label 'linode-agent'
         }
         
-    environment {
-        define fallback default
-        ENV_TYPE = 'dev'
-    }
 
     stages {
         stage("detect environment") {
