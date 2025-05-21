@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     echo "Scanning for End-of-Life packages..."
-                    eolStage()
+                    eolStage(imageName)
                 }
             }
         }
