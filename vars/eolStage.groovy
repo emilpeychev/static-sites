@@ -15,6 +15,6 @@ def call(String imageName) {
         fi
     '''
     // Run the trivy, xeol scan
-    sh "/tmp/bin/trivy ${imageName} --output table || echo 'Trivy scan failed'"
+    sh "/tmp/bin/trivy image ${imageName} --output table || echo 'Trivy scan failed'"
     sh "/tmp/bin/xeol ${imageName} --output table || echo 'Trivy scan failed'"
 }
