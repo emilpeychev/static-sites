@@ -15,6 +15,6 @@ def call() {
         fi
     '''
     // Run the trivy, xeol scan
-    sh "/tmp/bin/trivy . --output table"
-    sh "/tmp/bin/xeol . --output table"
+    sh "/tmp/bin/trivy ${imageName} --output table"
+    sh "/tmp/bin/xeol ${imageName} --output table"
 }
