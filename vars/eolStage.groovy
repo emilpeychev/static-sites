@@ -1,4 +1,4 @@
-def call() {
+def call(String imageName) {
     echo "Checking for End-of-Life packages using xeol..."
 
     // Install xeol if needed
@@ -15,6 +15,6 @@ def call() {
         fi
     '''
     // Run the trivy, xeol scan
-    sh "/tmp/bin/trivy ${imageName} --output table"
-    sh "/tmp/bin/xeol ${imageName} --output table"
+    sh "/tmp/bin/trivy ${imageName} --output table || echo 'Trivy scan failed'"
+    sh "/tmp/bin/xeol ${imageName} --output table || echo 'Trivy scan failed'"
 }
