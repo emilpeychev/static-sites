@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:8.0-apache
 
 # Add the user unprivileged_user
 RUN apt-get update && apt-get install -y adduser
