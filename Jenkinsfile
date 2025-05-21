@@ -1,4 +1,4 @@
-@Library('shared-lib@fearure-xeol') _
+@Library('shared-lib') _
 
 def gv
 
