@@ -2,7 +2,7 @@
 
 def gv
 
-def ENV_TYPE = 'dev' // fallback/default, will be overwritten
+def ENV_TYPE
 
 pipeline {
     agent {
