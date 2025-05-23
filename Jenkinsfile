@@ -8,7 +8,10 @@ pipeline {
     agent {
         label 'linode-agent'
         }
-        
+
+    parameters {
+        choice(name: 'ENV_TYPE', choices: ['dev', 'staging', 'prod'], description: 'Choose the deployment environment')
+    }
 
     stages {
         stage("detect environment") {
