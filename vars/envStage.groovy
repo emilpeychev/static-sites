@@ -1,7 +1,8 @@
 def call() {
     def branch = env.BRANCH_NAME ?: sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
     def isProd = branch in ['master', 'main']
-    def envType = isProd ? 'prod' : 'dev'
+    def isStaging = branch in ['staging']
+    def envType = isProd ? 'prod' : (isStaging ? 'staging' : 'dev')
 
     echo "Environment: ${envType.toUpperCase()} (Branch: ${branch})"
 
