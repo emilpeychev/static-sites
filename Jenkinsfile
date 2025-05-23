@@ -2,7 +2,7 @@
 
 def gv
 
-def ENV_TYPE
+def ENV_TYPE = params.ENV_TYPE ?: envStage() ?: 'dev'
 
 pipeline {
     agent {
@@ -17,7 +17,7 @@ pipeline {
         stage("detect environment") {
             steps {
                 script {
-                    ENV_TYPE = envStage()
+                    ENV_TYPE = params.ENV_TYPE ?: envStage()
                     env.ENV_TYPE = ENV_TYPE
                     echo "ENV_TYPE is ${ENV_TYPE}"
                 }
