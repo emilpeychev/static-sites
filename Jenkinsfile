@@ -19,6 +19,7 @@ pipeline {
                 script {
                     ENV_TYPE = envStage()
                     env.ENV_TYPE = ENV_TYPE
+                    echo "ENV_TYPE is ${ENV_TYPE}"
                 }
             }
         }
