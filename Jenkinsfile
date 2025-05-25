@@ -1,21 +1,25 @@
-@Library('shared-lib') _
+@Library('shared-lib) _
 
 def gv
 
-def ENV_TYPE = 'dev' // fallback/default, will be overwritten
+def ENV_TYPE = params.ENV_TYPE ?: envStage() ?: 'dev'
 
 pipeline {
     agent {
         label 'linode-agent'
         }
-        
+
+    parameters {
+        choice(name: 'ENV_TYPE', choices: ['dev', 'staging', 'prod'], description: 'Choose the deployment environment')
+    }
 
     stages {
         stage("detect environment") {
             steps {
                 script {
-                    ENV_TYPE = envStage()
+                    ENV_TYPE = params.ENV_TYPE ?: envStage()
                     env.ENV_TYPE = ENV_TYPE
+                    echo "ENV_TYPE is ${ENV_TYPE}"
                 }
             }
         }
