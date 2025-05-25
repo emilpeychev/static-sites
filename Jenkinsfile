@@ -1,4 +1,5 @@
-@Library('shared-lib) _
+@Library('shared-lib@clean-up') _
+
 
 def gv
 
@@ -61,6 +62,13 @@ pipeline {
                 script {
                     echo "Deploying the application...."
                     gv.deployApp(ENV_TYPE)
+                }
+            }
+        }
+        stage("cleanup pipeline") {
+            steps {
+                script {
+                    cleanupStage()
                 }
             }
         }
