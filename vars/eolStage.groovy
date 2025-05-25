@@ -9,7 +9,7 @@ def call(String imageName) {
             curl -sSfL https://raw.githubusercontent.com/xeol-io/xeol/main/install.sh | sh -s -- -b /tmp/bin
         fi
     
-        if ! command -v /tmp/bin/ > /dev/null; then
+        if ! command -v /tmp/bin > /dev/null; then
             echo "Installing trivy..."
             curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /tmp/bin
         fi
