@@ -53,7 +53,7 @@ ${logText}
         httpMode: 'POST',
         contentType: 'APPLICATION_JSON',
         requestBody: jsonPayload,
-        url: 'http://ollama:11434/api/generate',
+        url: 'http://localhost:11434/api/generate',
         validResponseCodes: '200:299',
         consoleLogResponseBody: true
     )
