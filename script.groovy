@@ -40,7 +40,7 @@ ${logText}
 """
 
     def payload = [
-        model : 'llama3',
+        model: 'llama3',
         prompt: promptText,
         stream: false
     ]
@@ -50,15 +50,20 @@ ${logText}
     echo "Sending logs summary request to Ollama AI..."
     echo "JSON Payload: ${jsonPayload}"
 
-    def response = httpRequest(
-        httpMode: 'POST',
-        contentType: 'APPLICATION_JSON',
-        requestBody: jsonPayload,
-        url: 'http://ollama:11434/api/generate',
-        consoleLogResponseBody: true
-    )
-
-    echo "Ollama AI Summary Response:\n${response.content}"
+    try {
+        def response = httpRequest(
+            httpMode: 'POST',
+            contentType: 'APPLICATION_JSON',
+            requestBody: jsonPayload,
+            url: 'http://172.18.0.5:11434/api/generate', // Use IP and correct endpoint
+            validResponseCodes: '200:299',
+            consoleLogResponseBody: true
+        )
+        echo "Ollama AI Summary Response:\n${response.content}"
+    } catch (Exception e) {
+        echo "Failed to get AI summary: ${e.message}"
+        currentBuild.result = 'UNSTABLE'
+    }
 }
 
 
