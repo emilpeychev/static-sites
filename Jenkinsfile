@@ -72,4 +72,12 @@ pipeline {
             }
         }
     }
-}
+
+    post {
+        always {
+        script {
+            postAnalyses()
+            }
+        }
+    }
+} //pipeline end bracket

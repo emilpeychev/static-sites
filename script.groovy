@@ -29,5 +29,39 @@ def deployApp(envType) {
     }
 }
 
+def postAnalyses() {
+    echo "Collecting last 500 lines of Jenkins build logs for AI summary..."
+
+    def logLines = currentBuild.rawBuild.getLog()
+    def limitedLogs = logLines.takeRight(500).join("\n")
+
+    def promptText = """Please provide a concise summary highlighting errors, warnings, and important information from these Jenkins pipeline logs:
+
+${limitedLogs}
+"""
+
+    def payload = [
+        model: 'llama3',
+        prompt: promptText,
+        stream: false
+        max_tokens: 300
+        // add max_tokens if supported, e.g. max_tokens: 300
+    ]
+
+    def jsonPayload = groovy.json.JsonOutput.toJson(payload)
+    def url = 'http://ollama:11434/api/generate'
+
+    echo "Sending logs summary request to Ollama AI..."
+
+    def connection = new URL(url).openConnection()
+    connection.setRequestMethod('POST')
+    connection.setDoOutput(true)
+    connection.setRequestProperty('Content-Type', 'application/json')
+    connection.getOutputStream().write(jsonPayload.getBytes('UTF-8'))
+
+    def responseText = connection.getInputStream().getText()
+    echo "Ollama AI Summary Response:\n${responseText}"
+}
+
 
 return this
