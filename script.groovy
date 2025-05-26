@@ -48,12 +48,13 @@ ${logText}
     def jsonPayload = groovy.json.JsonOutput.toJson(payload)
 
     echo "Sending logs summary request to Ollama AI..."
+    echo "JSON Payload: ${jsonPayload}"
 
     def response = httpRequest(
         httpMode: 'POST',
         contentType: 'APPLICATION_JSON',
         requestBody: jsonPayload,
-        url: 'http://localhost:11434/generate',
+        url: 'http://ollama:11434/generate', // Use container name 'ollama' instead of 'localhost'
         validResponseCodes: '200:299',
         consoleLogResponseBody: true
     )
