@@ -54,8 +54,7 @@ ${logText}
         httpMode: 'POST',
         contentType: 'APPLICATION_JSON',
         requestBody: jsonPayload,
-        url: 'http://ollama:11434/generate', // Use container name 'ollama' instead of 'localhost'
-        validResponseCodes: '200:299',
+        url: 'http://ollama:11434/api/generate',
         consoleLogResponseBody: true
     )
 
