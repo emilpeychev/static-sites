@@ -55,7 +55,7 @@ ${logText}
             httpMode: 'POST',
             contentType: 'APPLICATION_JSON',
             requestBody: jsonPayload,
-            url: 'http://172.18.0.5:11434/api/generate', // Use IP and correct endpoint
+            url: 'http://ollama/api/generate', // Use IP and correct endpoint
             validResponseCodes: '200:299',
             consoleLogResponseBody: true
         )
