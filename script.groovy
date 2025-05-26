@@ -53,7 +53,7 @@ ${logText}
         httpMode: 'POST',
         contentType: 'APPLICATION_JSON',
         requestBody: jsonPayload,
-        url: 'http://localhost:11434/api/generate',
+        url: 'http://localhost:11434/generate',
         validResponseCodes: '200:299',
         consoleLogResponseBody: true
     )
