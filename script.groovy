@@ -44,7 +44,6 @@ ${limitedLogs}
         model: 'llama3',
         prompt: promptText,
         stream: false
-        max_tokens: 300
         // add max_tokens if supported, e.g. max_tokens: 300
     ]
 
