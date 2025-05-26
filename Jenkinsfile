@@ -75,8 +75,8 @@ pipeline {
 
     post {
         always {
-        script {
-            postAnalyses()
+            script {
+                gv.postAnalyses()
             }
         }
     }
