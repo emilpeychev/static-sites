@@ -32,8 +32,9 @@ def deployApp(envType) {
 def postAnalyses() {
     echo "Collecting last 500 lines of Jenkins build logs for AI summary..."
 
-    def logText = readFile('jenkins_build_output.log')
-    def limitedLogs = logLines.takeRight(500).join("\n")
+    def logText = currentBuild.rawBuild.getLog().join("\n")
+    def limitedLogs = logText.readLines().takeRight(500).join("\n")
+)
 
     def promptText = """Please provide a concise summary highlighting errors, warnings, and important information from these Jenkins pipeline logs:
 
