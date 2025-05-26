@@ -74,11 +74,9 @@ pipeline {
     }
 
     post {
-    always {
-        script {
-            // Dump all logs to a file during execution
-            sh 'tail -n 500 "$WORKSPACE/log_output.txt" > jenkins_build_output.log || true'
-            gv.postAnalyses()
+        always {
+            script {
+                gv.postAnalyses()
             }
         }
     }  
