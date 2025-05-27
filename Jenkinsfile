@@ -78,7 +78,7 @@ pipeline {
     }
 
         stage {
-            always {
+            steps {
                 script {
                     gv.postAnalyses()
                 }
