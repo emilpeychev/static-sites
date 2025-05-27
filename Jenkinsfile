@@ -12,7 +12,7 @@ pipeline {
     environment {
     OLLAMA_API = "http://10.1.0.2:11435"
     }
-    
+
     parameters {
         choice(name: 'ENV_TYPE', choices: ['dev', 'staging', 'prod'], description: 'Choose the deployment environment')
     }
@@ -77,12 +77,12 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            script {
-                gv.postAnalyses()
+        stage {
+            always {
+                script {
+                    gv.postAnalyses()
+                }
             }
-        }
-    }  
+        }  
 
 } //pipeline end bracket

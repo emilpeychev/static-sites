@@ -34,7 +34,7 @@ def postAnalyses() {
 
     def logText = currentBuild.getRawBuild().getLog(500).join("\n")
 
-    def promptText = """Please provide a concise summary highlighting errors, warnings, and important information from these Jenkins pipeline logs:
+    def promptText = """Please provide a concise summary highlighting errors and important information from these Jenkins pipeline logs:
 
 ${logText}
 """
