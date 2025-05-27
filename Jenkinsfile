@@ -9,6 +9,10 @@ pipeline {
         label 'linode-agent'
         }
 
+    environment {
+    OLLAMA_API = "http://10.1.0.2:11435"
+    }
+    
     parameters {
         choice(name: 'ENV_TYPE', choices: ['dev', 'staging', 'prod'], description: 'Choose the deployment environment')
     }
