@@ -55,7 +55,7 @@ ${logText}
             httpMode: 'POST',
             contentType: 'APPLICATION_JSON',
             requestBody: jsonPayload,
-            url: 'http://ollama:11434/api/generate', // Use IP and correct endpoint
+            url: 'http://10.1.0.2:11435/api/generate', // Use WireGard IP and correct endpoint
             validResponseCodes: '200:299',
             consoleLogResponseBody: true
         )
