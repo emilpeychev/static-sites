@@ -75,10 +75,10 @@ pipeline {
             }
         }
 
-    post ("AI Summary") {
+    post("AI Summary") {
         always
-        steps {
-            postAnalyses()
+            script {
+                postAnalyses()
             }
         }
     }
