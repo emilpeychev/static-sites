@@ -82,4 +82,5 @@ pipeline {
                 postAnalyses()
             }
         }
+    }
 } // End of pipeline
