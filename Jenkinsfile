@@ -7,10 +7,10 @@ def ENV_TYPE = params.ENV_TYPE ?: envStage() ?: 'dev'
 pipeline {
     agent {
         label 'linode-agent'
-        }
+    }
 
     environment {
-    OLLAMA_API = "http://10.1.0.2:11435"
+        OLLAMA_API = "http://10.1.0.2:11435"
     }
 
     parameters {
@@ -56,11 +56,9 @@ pipeline {
         }
 
         stage("deploy") {
-
-            when{
+            when {
                 branch 'master'
             }
-
             steps {
                 script {
                     echo "Deploying the application...."
@@ -68,6 +66,7 @@ pipeline {
                 }
             }
         }
+
         stage("cleanup pipeline") {
             steps {
                 script {
@@ -75,13 +74,11 @@ pipeline {
                 }
             }
         }
-    }
 
         stage("AI Summary") {
             steps {
                 postAnalyses()
             }
         }
-  
-
-} //pipeline end bracket
+    }
+}
