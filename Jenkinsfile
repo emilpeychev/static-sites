@@ -75,9 +75,10 @@ pipeline {
             }
         }
 
-        stage("AI Summary") {
-            steps {
-                postAnalyses()
+    post ("AI Summary") {
+        always
+        steps {
+            postAnalyses()
             }
         }
     }
