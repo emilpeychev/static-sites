@@ -77,7 +77,7 @@ pipeline {
         }
     }
 
-        stage {
+        stage ("AI Summary") {
             steps {
                 script {
                     gv.postAnalyses()
