@@ -29,7 +29,11 @@ ${logText}
             validResponseCodes: '200:299',
             consoleLogResponseBody: true
         )
-        echo "Ollama AI Summary Response:\n${response.content}"
+        def parsed = new groovy.json.JsonSlurper().parseText(response.content)
+        echo "AI Model: ${parsed.model}"
+        echo "Created At: ${parsed.created_at}"
+        echo "Summary:\n${parsed.response}"
+
     } catch (Exception e) {
         echo "Failed to get AI summary: ${e.message}"
         currentBuild.result = 'UNSTABLE'
