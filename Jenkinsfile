@@ -77,12 +77,11 @@ pipeline {
         }
     }
 
-        stage ("AI Summary") {
+        stage("AI Summary") {
             steps {
-                script {
-                    gv.postAnalyses()
-                }
+                postAnalyses()
             }
-        }  
+        }
+  
 
 } //pipeline end bracket
