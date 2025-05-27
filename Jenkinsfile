@@ -75,9 +75,9 @@ pipeline {
             }
         }
     } // End of stages
-    
+
     post("AI Summary") {
-        always
+        always {
             script {
                 postAnalyses()
             }
