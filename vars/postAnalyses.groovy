@@ -10,7 +10,7 @@ ${logText}
 """
 
     def payload = [
-        model : 'llama3',
+        model: 'llama3',
         prompt: promptText,
         stream: false
     ]
@@ -18,23 +18,23 @@ ${logText}
     def jsonPayload = groovy.json.JsonOutput.toJson(payload)
 
     echo "Sending logs summary request to Ollama AI..."
-    echo "JSON Payload: ${jsonPayload}"
+    echo "JSON Payload (truncated): ${jsonPayload.take(500)}..."
+
 
     try {
         def response = httpRequest(
             httpMode: 'POST',
-            contentType: 'APPLICATION_JSON',
+            contentType: 'application/json',
             requestBody: jsonPayload,
-            url: "${env.OLLAMA_API ?: 'http://host.docker.internal:11434'}/api/generate",
+            url: "${env.OLLAMA_API}/api/generate",
             validResponseCodes: '200:299',
             consoleLogResponseBody: true
         )
-
         def parsed = new groovy.json.JsonSlurper().parseText(response.content)
-
         echo "AI Model: ${parsed.model ?: 'N/A'}"
         echo "Created At: ${parsed.created_at ?: 'N/A'}"
         echo "Summary:\n${parsed.response ?: 'No summary received.'}"
+
 
     } catch (Exception e) {
         echo "Failed to get AI summary: ${e.message}"
