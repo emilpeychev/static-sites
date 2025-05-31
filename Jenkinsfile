@@ -10,8 +10,9 @@ pipeline {
     }
 
     environment {
-        OLLAMA_API = "http://10.1.0.2:11435"
+        OLLAMA_API = 'http://host.docker.internal:11434'
     }
+
 
     parameters {
         choice(name: 'ENV_TYPE', choices: ['dev', 'staging', 'prod'], description: 'Choose the deployment environment')
