@@ -1,6 +1,3 @@
-import jenkins.plugins.http_request.HttpRequestStep
-import jenkins.plugins.http_request.util.MimeType
-
 def call() {
     echo "Collecting last 500 lines of Jenkins build logs for AI summary..."
 
