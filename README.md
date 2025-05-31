@@ -12,6 +12,7 @@ docker run -d \
   -e LOG_CONFS=true \
   -v /lib/modules:/lib/modules \
   --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
+  --add-host=host.docker.internal:172.17.0.1 \
   --restart unless-stopped \
   linuxserver/wireguard
 
@@ -38,5 +39,7 @@ EOF
 docker exec -it proxy-client sed -i "s|<server-public-key>|nO3f6mSQrqOmDt9qlZ6S6/UYlQNGaq20vKXQVu0NyFI=|" /config/wg_confs/wg0.conf
 docker exec -it proxy-client cat /tmp/publickey
 docker exec -it proxy-client cat /config/wg_confs/wg0.conf
+docker network connect jenkins proxy-client
+docker exec proxy-client sh -c "echo '172.17.0.1 host.docker.internal' >> /etc/hosts"
 
 ```
