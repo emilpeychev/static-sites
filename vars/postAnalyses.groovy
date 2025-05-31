@@ -25,7 +25,7 @@ ${logText}
     try {
         def response = httpRequest(
             httpMode: 'POST',
-            contentType: MimeType.JSON, // ✅ Correct enum usage
+            contentType = 'APPLICATION_JSON'
             requestBody: jsonPayload,
             url: "${env.OLLAMA_API}/api/generate",
             validResponseCodes: '200:299',
