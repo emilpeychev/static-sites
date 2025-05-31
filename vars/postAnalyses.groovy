@@ -25,7 +25,7 @@ ${logText}
             httpMode: 'POST',
             contentType: 'APPLICATION_JSON',
             requestBody: jsonPayload,
-            url: "http://host.docker.internal:11434/api/generate",
+            url: "${env.OLLAMA_API}/api/generate",
             validResponseCodes: '200:299',
             consoleLogResponseBody: true
         )

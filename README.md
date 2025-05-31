@@ -12,7 +12,7 @@ docker run -d \
   -e LOG_CONFS=true \
   -v /lib/modules:/lib/modules \
   --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
-  --add-host=host.docker.internal:172.17.0.1 \
+  --add-host=host.docker.internal:host-gateway \
   --restart unless-stopped \
   linuxserver/wireguard
 
