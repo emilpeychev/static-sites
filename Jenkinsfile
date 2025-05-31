@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        OLLAMA_API = 'http://host.docker.internal:11434'
+        OLLAMA_API = 'http://ollama:11434'
     }
 
 
